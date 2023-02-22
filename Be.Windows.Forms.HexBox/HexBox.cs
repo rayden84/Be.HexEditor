@@ -1163,11 +1163,15 @@ namespace Be.Windows.Forms
 		/// Contains the maximum of visible bytes.
 		/// </summary>
 		int _iHexMaxBytes;
+        /// <summary>
+        /// Contains the digit count of the line info.
+        /// </summary>
+        int _imaxDigitCount = 8;
 
-		/// <summary>
-		/// Contains the scroll bars minimum value
-		/// </summary>
-		long _scrollVmin;
+        /// <summary>
+        /// Contains the scroll bars minimum value
+        /// </summary>
+        long _scrollVmin;
 		/// <summary>
 		/// Contains the scroll bars maximum value
 		/// </summary>
@@ -2424,15 +2428,15 @@ namespace Be.Windows.Forms
 
 				PointF bytePointF = GetBytePointF(new Point(0, 0 + i));
 				string info = firstLineByte.ToString(_hexStringFormat, System.Threading.Thread.CurrentThread.CurrentCulture);
-				int nulls = 8 - info.Length;
+				int nulls = _imaxDigitCount - info.Length;
 				string formattedInfo;
 				if (nulls > -1)
 				{
-					formattedInfo = new string('0', 8 - info.Length) + info;
+					formattedInfo = new string('0', _imaxDigitCount - info.Length) + info;
 				}
 				else
 				{
-					formattedInfo = new string('~', 8);
+					formattedInfo = new string('~', _imaxDigitCount);
 				}
 
 				g.DrawString(formattedInfo, Font, brush, new PointF(_recLineInfo.X, bytePointF.Y), _stringFormat);
@@ -3180,7 +3184,7 @@ namespace Be.Windows.Forms
 					_byteProvider.LengthChanged -= new EventHandler(_byteProvider_LengthChanged);
 
 				_byteProvider = value;
-				if (_byteProvider != null)
+                if (_byteProvider != null)
 					_byteProvider.LengthChanged += new EventHandler(_byteProvider_LengthChanged);
 
 				OnByteProviderChanged(EventArgs.Empty);
@@ -3195,7 +3199,9 @@ namespace Be.Windows.Forms
 				}
 				else
 				{
-					SetPosition(0, 0);
+                    _imaxDigitCount = _byteProvider.Length.ToString(_hexStringFormat, System.Threading.Thread.CurrentThread.CurrentCulture).Length;
+
+                    SetPosition(0, 0);
 					SetSelectionLength(0);
 
 					if (_caretVisible && Focused)
