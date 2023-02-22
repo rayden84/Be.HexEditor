@@ -1101,9 +1101,9 @@ namespace Be.Windows.Forms
 		/// </summary>
         public class HighlightedRegion
         {
-            public int Start;
-            public int Length;
-            public int End { get { return Start + Length - 1; } }
+            public long Start;
+            public long Length;
+            public long End { get { return Start + Length - 1; } }
             public Color Color;
 
             public HighlightedRegion()
@@ -1111,7 +1111,7 @@ namespace Be.Windows.Forms
 
             }
 
-            public HighlightedRegion(int Start, int Length, Color Color)
+            public HighlightedRegion(long Start, long Length, Color Color)
             {
                 this.Start = Start;
                 this.Length = Length;
