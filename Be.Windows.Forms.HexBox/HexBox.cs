@@ -1578,7 +1578,7 @@ namespace Be.Windows.Forms
 			else
 			{
 				double valperc = (double)value / (double)max * (double)100;
-				long res = (int)Math.Floor((double)_scrollVmax / (double)100 * valperc);
+				long res = (long)Math.Floor((double)_scrollVmax / (double)100 * valperc);
 				return res;
 			}
 		}
