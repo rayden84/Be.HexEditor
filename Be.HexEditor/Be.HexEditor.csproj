@@ -2,7 +2,7 @@
   <PropertyGroup>
     <ApplicationIcon>App.ico</ApplicationIcon>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <SupportUrl>https://github.com/themeldingwars/Be.HexEditor</SupportUrl>
     <ProductName>Be.HexEditor</ProductName>
