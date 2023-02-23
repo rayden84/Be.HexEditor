@@ -2840,7 +2840,7 @@ namespace Be.Windows.Forms
 			{
 				_recLineInfo = new Rectangle(_recContent.X + marginLeft,
 					_recContent.Y,
-					(int)(_charSize.Width * 10),
+					(int)(_charSize.Width * (_imaxDigitCount + 2)),
 					_recContent.Height);
                 requiredWidth += _recLineInfo.Width;
 			}
